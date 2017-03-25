@@ -1,0 +1,105 @@
+#chatBoxes {
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    margin-right: 310px;
+}
+.chatBtn {
+    background-color: transparent;
+    border: none;
+    height: 100%;
+    float: right;
+}
+.msgContainer {
+    bottom: 0;
+    right: 0;
+    width: 300px;
+    position: fixed;
+    background-color: white;
+
+
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+    font-family: 'tahoma', sans-serif;
+    font-size: 12px;
+}
+
+/* message box header styles*/
+.msg-wgt-header {
+  background-color: #2f2f2f;
+  border: 1px solid #000000;
+  color: white;
+  text-align: center;
+  height: 32px;
+}
+
+.msg-wgt-header a {
+  text-decoration: none;
+  font-weight: bold;
+  color: white;
+  vertical-align: middle;
+}
+
+/* message box body styles*/
+
+.msg-wgt-body {
+  height: 300px;
+  overflow-y: scroll;
+}
+
+.msg-wgt-body table {
+  width: 100%;
+}
+
+.msg-row-container {
+  border-bottom: 1px solid lightgray;
+}
+
+.msg-row-container td {
+  border-bottom: 1px solid lightgray;
+  padding: 3px 0 3px 2px;
+}
+
+.msg-row {
+  width: 100%;
+}
+
+.message {
+
+}
+
+/* Message box footer styles*/
+
+.msg-wgt-footer {
+  height: 50px;
+}
+
+.msg-wgt-footer textarea {
+  width: 80%;
+    font-family: 'tahoma', sans-serif;
+  font-size: 13px;
+  padding: 5px;
+}
+.msg-wgt-footer button {
+    position: fixed;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+.user-label {
+  font-size: 11px;
+}
+
+.msg-time {
+  font-size: 10px;
+  float: right;
+  color: gray;
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  float: left;
+  margin-right: 5px;
+  border: 1px solid lightgray;
+}
