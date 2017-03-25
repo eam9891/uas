@@ -7,7 +7,7 @@
  */
 
 // Always provide a TRAILING SLASH (/) AFTER A PATH
-define('ROOT', 'http://192.168.0.132/mvc/');
+define('ROOT', 'eserv.us/');
 define('LIBS', 'libs/');
 
 define('DB_TYPE', 'mysql');

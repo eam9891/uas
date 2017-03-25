@@ -18,9 +18,6 @@ use framework\libs\SessionManager;
 error_reporting(E_ALL | E_STRICT);
 ini_set("display_errors", 1);
 
-spl_autoload_register(function($class) {
-    include '/var/www/html/undergroundartschool/' . str_replace('\\', '/', $class) . '.php';
-});
 
 class LoginController extends ILogin {
 

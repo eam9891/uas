@@ -60,7 +60,7 @@ class IndexHeader {
                 <h4 class="modal-title">Registration</h4>
             </div>
             <div class="modal-body">
-                <form action="http://192.168.0.132/mvc/register" method="POST">
+                <form action="register/" method="POST">
                     <div class="form-group">
                         <label for="email">Enter Your Email Address:</label>
                         <input type="text" class="form-control" id="email" name="email">
@@ -94,7 +94,7 @@ class IndexHeader {
                 <h4 class="modal-title">Login</h4>
             </div>
             <div class="modal-body">
-                <form action="http://192.168.0.132/mvc/login/" method="POST">
+                <form action="login/" method="POST">
                     <div class="form-group">
                         <label for="username">Username:</label>
                         <input type="text" class="form-control" id="username" name="username">

@@ -26,8 +26,8 @@ interface IConnect {
 
     const DB_HOST = "localhost";
     const DB_NAME = "eserv";
-    const DB_USERNAME = "ethan";
-    const DB_PASSWORD = "Slayer0834";
+    const DB_USERNAME = "root";
+    const DB_PASSWORD = "Slayer9891";
     const DB_DRIVER = "mysql";
 
 }
