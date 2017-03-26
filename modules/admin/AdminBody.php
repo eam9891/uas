@@ -91,7 +91,7 @@ namespace modules\admin {
         <div class="col-md-9 col-sm-9">
             <div id="display"></div>
             <div id="wait" style="display:none;width:69px;height:89px;border:1px solid black;position:absolute;top:50%;left:50%;padding:2px;">
-                <img src='http://192.168.0.132/mvc/public/images/loader.gif' width="64" height="64" /><br>Loading..
+                <img src='http://eserv.us/public/images/loader.gif' width="64" height="64" /><br>Loading..
             </div>
         </div>
         

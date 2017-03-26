@@ -30,7 +30,7 @@ class IndexBody {
         <div class="panel-group">
             <div id="display">Coming Soon...</div>
             <div id="wait" style="display:none;width:69px;height:89px;border:1px solid black;position:absolute;top:50%;left:50%;padding:2px;">
-                <img src='images/loader.gif' width="64" height="64" /><br>Loading..
+                <img src='http://eserv.us/public/images/loader.gif' width="64" height="64" /><br>Loading..
             </div>
         </div>
     </div>

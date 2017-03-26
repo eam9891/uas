@@ -30,7 +30,7 @@ class Request {
         }
         $this->segments = explode('/', $this->url);
         array_shift($this->segments);
-        array_shift($this->segments);
+        //array_shift($this->segments);
 
 
         // Set controller

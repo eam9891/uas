@@ -94,7 +94,7 @@ class IndexHeader {
                 <h4 class="modal-title">Login</h4>
             </div>
             <div class="modal-body">
-                <form action="login/" method="POST">
+                <form action="/login/" method="POST">
                     <div class="form-group">
                         <label for="username">Username:</label>
                         <input type="text" class="form-control" id="username" name="username">

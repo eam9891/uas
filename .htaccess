@@ -1,11 +1,14 @@
-Options -Indexes
-RewriteRule ^(public) - [L]
+<IfModule mod_rewrite.c>
+Options +FollowSymLinks -MultiViews -Indexes
 
 RewriteEngine On
+RewriteBase /
+
+RewriteRule ^(public) - [L]
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
-
 RewriteRule ^(.*)$ index.php/$1 [NC,L,QSA]
 
+</IfModule>

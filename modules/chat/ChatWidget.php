@@ -60,7 +60,7 @@ class ChatWidget {
     var value = $('#chatID').val();
     $.ajax({
         type: "POST",
-        url: "http://192.168.0.132/mvc/chat/messagesRead/" + value,
+        url: "http://eserv.us/chat/messagesRead/" + value,
         cache: false,
         success: function(data) {
             

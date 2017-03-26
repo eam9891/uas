@@ -19,14 +19,14 @@ namespace modules\home {
             parent::$auth = Authorize::User($USER);
             $username = $USER->getUsername();
             $role = $USER->getRole();
-            self::$htmlString = <<<bodyUI
+            self::$htmlString = <<<HTML
 
             <div class="container text-center">
                 <div class="row">
                 
                     <div class="col-md-3 well hidden-sm hidden-xs">
                         <div class="well">
-                            <img src="http://192.168.0.132/mvc/public/images/img_avatar2.png" class="img-circle" height="65" width="65" alt="Avatar">
+                            <img src="http://www.eserv.us/public/images/img_avatar2.png" class="img-circle" height="65" width="65" alt="Avatar">
                             <p>
                                 <a href="#">$username</a><br>
                                 <small>$role</small>
@@ -138,7 +138,7 @@ namespace modules\home {
                 </div>
             </div>
         
-bodyUI;
+HTML;
             parent::__construct(self::$htmlString);
         }
     }

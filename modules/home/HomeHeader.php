@@ -20,7 +20,7 @@ namespace modules\home {
             $username = $USER->getUsername();
             $userRole = $USER->getRole();
             $email = $USER->getEmail();
-            self::$htmlString = <<<headerUI
+            self::$htmlString = <<<HTML
 
 
 <nav class="navbar navbar-inverse">
@@ -32,7 +32,7 @@ namespace modules\home {
             <div class="dropdown pull-right" style=" margin-top: 5px;">
                 <a class="dropdown-toggle profileButton " data-toggle="dropdown" style="padding: 0; ">
                     <span class="pull-right align-middle" style="margin-left: 10px;">
-                        <img src="http://192.168.0.132/mvc/public/images/img_avatar2.png" class="img-circle" 
+                        <img src="http://eserv.us/public/images/img_avatar2.png" class="img-circle" 
                             height="30" width="30" alt="Avatar"><br>
                             <span class="glyphicon glyphicon-option-horizontal" style="margin-left: 8px; "></span>
                     </span>
@@ -92,7 +92,7 @@ namespace modules\home {
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a href="logout/" class="btn btn-warning btn-block btn-sm"> 
+                        <a href="/logout/" class="btn btn-warning btn-block btn-sm"> 
                             Sign Out 
                             <span class="glyphicon glyphicon-log-out pull-right"></span>
                         </a>
@@ -117,7 +117,7 @@ namespace modules\home {
     </div>
 </nav>
 
-headerUI;
+HTML;
             parent::__construct(self::$htmlString);
         }
     }

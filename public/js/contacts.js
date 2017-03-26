@@ -29,7 +29,7 @@ eChat = {
         var mId = $('#msgs tbody tr:last').attr('id');
         $(document).unbind(".mine");
         $.ajax({
-            url: "http://192.168.0.132/mvc/chat/getMessages/",
+            url: "http://eserv.us/chat/getMessages/",
             method: 'GET',
             data: {
                 'chatID' : id,
@@ -74,7 +74,7 @@ $(document).ready(function(){
         // Get the new chat box window
         $.ajax({
             type: "GET",
-            url: "http://192.168.0.132/mvc/contacts/action/",
+            url: "http://eserv.us/contacts/action/",
             data: data,
             success: function(data) {
                 chatBoxes.append(data).fadeIn();
@@ -92,7 +92,7 @@ $(document).ready(function(){
         // Get the new chat box window
         $.ajax({
             type: "POST",
-            url: "http://192.168.0.132/mvc/chat/getChatWidget/" + chatID,
+            url: "http://eserv.us/chat/getChatWidget/" + chatID,
             cache: false,
             success: function(data) {
                 chatBoxes.append(data).fadeIn();
@@ -137,7 +137,7 @@ $(document).ready(function(){
 
             $.ajax({
                 type: "POST",
-                url: "http://192.168.0.132/mvc/chat/addMessage/" + chatID,
+                url: "http://eserv.us/chat/addMessage/" + chatID,
                 data: {
                     'msg'  : msg
                 },
@@ -162,7 +162,7 @@ $(document).ready(function(){
 
         $.ajax({
             type: "GET",
-            url: "http://192.168.0.132/mvc/contacts/searchUsers/",
+            url: "http://eserv.us/contacts/searchUsers/",
             data: {
                 'string' : data
             },
@@ -171,7 +171,6 @@ $(document).ready(function(){
                 searchResults.html(data).fadeIn();
             }
         });
-
     });
 
     // Send friend request from search
@@ -182,7 +181,7 @@ $(document).ready(function(){
 
         $.ajax({
             type: "GET",
-            url: "http://192.168.0.132/mvc/contacts/action/",
+            url: "http://eserv.us/contacts/action/",
             data: {
                 'contactID' : data,
                 'action'    : "add"

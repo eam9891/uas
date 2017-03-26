@@ -10,7 +10,7 @@ namespace framework\core;
 
 class Authorize extends IUserInterface {
 
-    public static function AdminOnly(User $obj) : bool {
+    public static function AdminOnly(User &$obj) : bool {
         if ($obj->getRole() == "admin") {
             parent::$auth = true;
         } else {
@@ -19,7 +19,7 @@ class Authorize extends IUserInterface {
         return parent::$auth;
     }
 
-    public static function Contributor(User $obj) : bool {
+    public static function Contributor(User &$obj) : bool {
         if ($obj->getRole() == "admin" || $obj->getRole() == "contributor") {
             parent::$auth = true;
         } else {
@@ -28,7 +28,7 @@ class Authorize extends IUserInterface {
         return parent::$auth;
     }
 
-    public static function User(User $obj) : bool {
+    public static function User(User &$obj) : bool {
         if ($obj->getRole() == "admin" || $obj->getRole() == "contributor" || $obj->getRole() == "user") {
             parent::$auth = true;
         } else {
