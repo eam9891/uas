@@ -7,7 +7,7 @@
  */
 
 // Always provide a TRAILING SLASH (/) AFTER A PATH
-define('ROOT', 'http://eserv.us/');
+define('ROOT', 'eserv.us/');
 define('LIBS', 'libs/');
 
 define('DB_TYPE', 'mysql');
@@ -15,4 +15,3 @@ define('DB_HOST', 'localhost');
 define('DB_NAME', 'eserv');
 define('DB_USER', 'ethan');
 define('DB_PASS', 'Slayer0834');
-

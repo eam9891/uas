@@ -21,9 +21,9 @@ abstract class Framework {
     private static function init() {
 
         // include configs
-        include "framework/config/config.php";
+        include "../config/config.php";
 
-        SessionManager::sessionStart("eMorris");
+        SessionManager::sessionStart("eserv");
 
         // Start the request/router
         $requests = new Request();
