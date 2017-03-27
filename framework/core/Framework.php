@@ -21,7 +21,7 @@ abstract class Framework {
     private static function init() {
 
         // include configs
-        include "../config/config.php";
+        include "framework/config/config.php";
 
         SessionManager::sessionStart("eserv");
 

@@ -28,7 +28,7 @@ class ChatWriter {
                 $messageUserID = $message['userID'];
 
                 if ($messageUserID == $userID) {
-                    $chat_converstaion[] = <<<MSG
+                    $chat_converstaion[] = <<<HTML
         <tr class="msg-row-container" id="$id" >
             <td>
                 <div class="msg-row">
@@ -44,9 +44,9 @@ class ChatWriter {
                 </div>
             </td>
         </tr>
-MSG;
+HTML;
                 } else {
-                    $chat_converstaion[] = <<<MSG
+                    $chat_converstaion[] = <<<HTML
         <tr class="msg-row-container" id="$id" >
             <td>
                 <div class="msg-row">
@@ -62,7 +62,7 @@ MSG;
                 </div>
             </td>
         </tr>
-MSG;
+HTML;
                 }
 
 

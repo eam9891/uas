@@ -38,7 +38,7 @@ namespace modules\admin {
 
         <div class="col-md-3 col-sm-3 ">
             <div class="well">
-                <img src="$root/public/images/img_avatar2.png" class="" height="65" width="65" alt="Avatar">
+                <img src="http://www.eserv.us/public/images/img_avatar2.png" class="" height="65" width="65" alt="Avatar">
                 <p>
                     <a href="#">$username</a><br>
                     <small>$userRole</small>
@@ -91,7 +91,7 @@ namespace modules\admin {
         <div class="col-md-9 col-sm-9">
             <div id="display"></div>
             <div id="wait" style="display:none;width:69px;height:89px;border:1px solid black;position:absolute;top:50%;left:50%;padding:2px;">
-                <img src='http://eserv.us/public/images/loader.gif' width="64" height="64" /><br>Loading..
+                <img src='http://www.eserv.us/public/images/loader.gif' width="64" height="64" /><br>Loading..
             </div>
         </div>
         

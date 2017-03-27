@@ -18,7 +18,7 @@ class IndexHeader {
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="http://192.168.0.132/mvc/">Underground Art School</a>
+            <a class="navbar-brand" href="http://www.eserv.us">Underground Art School</a>
         </div>
         <div class="collapse navbar-collapse" id="topNav">
             
@@ -26,7 +26,7 @@ class IndexHeader {
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Navigate <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="http://192.168.0.132/mvc/blog/">Blog</a></li>
+                        <li><a href="http://www.eserv.us/blog/">Blog</a></li>
                         <li><a href="#">Forum</a></li>
                         <li><a href="#">Shop</a></li>
                         <li role="separator" class="divider"></li>
@@ -60,7 +60,7 @@ class IndexHeader {
                 <h4 class="modal-title">Registration</h4>
             </div>
             <div class="modal-body">
-                <form action="register/" method="POST">
+                <form action="http://www.eserv.us/register/" method="POST">
                     <div class="form-group">
                         <label for="email">Enter Your Email Address:</label>
                         <input type="text" class="form-control" id="email" name="email">
@@ -94,7 +94,7 @@ class IndexHeader {
                 <h4 class="modal-title">Login</h4>
             </div>
             <div class="modal-body">
-                <form action="/login/" method="POST">
+                <form action="http://www.eserv.us/login/" method="POST">
                     <div class="form-group">
                         <label for="username">Username:</label>
                         <input type="text" class="form-control" id="username" name="username">

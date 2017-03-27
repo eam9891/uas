@@ -58,12 +58,14 @@ class ChatController {
             $contactID = $_GET['chatID'];
             $lastMsgID = $_GET['lmID'];
 
+
+
             $chat = new FbChatMock();
             $messages = $chat->getChatUpdates($this->userID, $contactID, $lastMsgID);
 
             $returnMsgs = new ChatWriter();
-            echo $returnMsgs->writeMessages($this->USER, $contactID, $messages);
-
+            $newMsgs = $returnMsgs->writeMessages($this->USER, $contactID, $messages);
+            echo $newMsgs;
         }
     }
 

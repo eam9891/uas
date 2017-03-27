@@ -26,10 +26,11 @@ eChat = {
     getMessages: function() {
 
         var id = eChat.friendID;
-        var mId = $('#msgs tbody tr:last').attr('id');
+        var mId = $('.chatBox#'+ id +' #msgs tbody tr:last').attr('id');
+
         $(document).unbind(".mine");
         $.ajax({
-            url: "http://eserv.us/chat/getMessages/",
+            url: "http://www.eserv.us/chat/getMessages/",
             method: 'GET',
             data: {
                 'chatID' : id,
@@ -74,7 +75,7 @@ $(document).ready(function(){
         // Get the new chat box window
         $.ajax({
             type: "GET",
-            url: "http://eserv.us/contacts/action/",
+            url: "http://www.eserv.us/contacts/action/",
             data: data,
             success: function(data) {
                 chatBoxes.append(data).fadeIn();
@@ -92,7 +93,7 @@ $(document).ready(function(){
         // Get the new chat box window
         $.ajax({
             type: "POST",
-            url: "http://eserv.us/chat/getChatWidget/" + chatID,
+            url: "http://www.eserv.us/chat/getChatWidget/" + chatID,
             cache: false,
             success: function(data) {
                 chatBoxes.append(data).fadeIn();
@@ -143,6 +144,7 @@ $(document).ready(function(){
                 },
                 cache: false,
                 success: function(data) {
+                    eChat.getMessages();
 
                     msgArea.append(data).fadeIn();
 
@@ -162,7 +164,7 @@ $(document).ready(function(){
 
         $.ajax({
             type: "GET",
-            url: "http://eserv.us/contacts/searchUsers/",
+            url: "http://www.eserv.us/contacts/searchUsers/",
             data: {
                 'string' : data
             },
@@ -181,7 +183,7 @@ $(document).ready(function(){
 
         $.ajax({
             type: "GET",
-            url: "http://eserv.us/contacts/action/",
+            url: "http://www.eserv.us/contacts/action/",
             data: {
                 'contactID' : data,
                 'action'    : "add"

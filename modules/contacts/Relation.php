@@ -42,7 +42,7 @@ class Relation extends Relationship {
     public function getNumContacts() {
         $id = (int)$this->USER->getUserId();
 
-        $query = <<<TAG
+        $query = <<<SQL
 
             SELECT * FROM contacts
             WHERE (
@@ -50,7 +50,7 @@ class Relation extends Relationship {
                 AND status = :s
             )
         
-TAG;
+SQL;
         $query_params = array(
             ':u1' => $id,
             ':u2' => $id,
@@ -105,6 +105,7 @@ TAG;
             $rel->arrToRelationship($value);
             $rels[] = $rel;
         }
+
 
         return $rels;
     }

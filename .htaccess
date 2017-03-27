@@ -4,6 +4,9 @@ Options +FollowSymLinks -MultiViews -Indexes
 RewriteEngine On
 RewriteBase /
 
+RewriteCond %{HTTP_HOST} ^eserv.us
+RewriteRule (.*) http://www.eserv.us/$1 [R=301,L]
+
 RewriteRule ^(public) - [L]
 
 RewriteCond %{REQUEST_FILENAME} !-f

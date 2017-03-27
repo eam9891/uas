@@ -80,7 +80,7 @@ HTML;
         var data;
         $.ajax({
             type: "POST",
-            url: "http://192.168.0.132/mvc/blog/admin/getEditTable",
+            url: "http://www.eserv.us/blog/admin/getEditTable",
             data: {
                 'params'  : {
                     'orderBy' : $('#editBlogOrderBy').val(),
@@ -103,7 +103,7 @@ HTML;
             var data;
             $.ajax({
                 type: "POST",
-                url: "http://192.168.0.132/mvc/blog/admin/getEditTable",
+                url: "http://www.eserv.us/blog/admin/getEditTable",
                 data: {
                     'params'  : {
                         'orderBy' : $('#editBlogOrderBy').val(),
@@ -123,7 +123,7 @@ HTML;
             var data;
             $.ajax({
                 type: "POST",
-                url: "http://192.168.0.132/mvc/blog/admin/getEditTable",
+                url: "http://www.eserv.us/blog/admin/getEditTable",
                 data: {
                     'params'  : {
                         'orderBy' : $('#editBlogOrderBy').val(),

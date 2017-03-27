@@ -19,7 +19,7 @@ function loader() {
 var data;
 $.ajax({
     type: "POST",
-    url: "blog/admin/editBlog/",
+    url: "http://www.eserv.us/blog/admin/editBlog/",
     data: {"params":{"orderBy":"postID","whichOrder":"DESC"}},
     success : function(data) {
         $("#display").hide().html(data).fadeIn();
@@ -51,7 +51,7 @@ $(document).ready(function() {
         var data;
         $.ajax({
             type: "POST",
-            url: "blog/admin/editBlog/",
+            url: "http://www.eserv.us/blog/admin/editBlog/",
             data: {"params":{"orderBy":"postID","whichOrder":"DESC"}},
             success : function(data) {
                 $("#display").hide().html(data).fadeIn();
@@ -81,7 +81,7 @@ $(document).ready(function() {
         var data;
         $.ajax({
             type: "POST",
-            url: "blog/contributor/newPost",
+            url: "http://www.eserv.us/blog/contributor/newPost",
             data: {"userID":"1","username":"e"},
             success : function(data) {
                 $("#display").hide().html(data).fadeIn();

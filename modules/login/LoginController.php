@@ -80,17 +80,25 @@ class LoginController extends ILogin {
                 SessionManager::sessionStart("eMorris");
                 SessionManager::sessionSet("id", $result['userID']);
 
+                if ($USER->getRole() == "user") {
+                    header("Location: " . ROOT . "home");
+                    die("Redirecting to: " . ROOT . "home");
+                }
+
                 header("Location: " . ROOT . $USER->getRole());
                 die("Redirecting to: " . ROOT . $USER->getRole());
 
             } else {
-                header("Location: " .ROOT);
-                die("Redirecting to: " .ROOT);
+                $this->redirect();
             }
         } else {
-            header("Location: " .ROOT);
-            die("Redirecting to: " .ROOT);
+            $this->redirect();
         }
+    }
+
+    public function redirect() {
+        header("Location: " .ROOT);
+        die("Redirecting to: " .ROOT);
     }
 }
 

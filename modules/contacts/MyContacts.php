@@ -60,7 +60,7 @@ class MyContacts {
                             break;
                     }
 
-                    $status = <<<activeIndicator
+                    $status = <<<HTML
                 
                 <div class="centerTop">
                     <svg class="centerTop" width="17" height="17"> 
@@ -70,11 +70,11 @@ class MyContacts {
                 </div>
                 
                         
-activeIndicator;
+HTML;
 
                     //$friendAvatar = $friend->getAvatar();
 
-                    $returnRows .= <<<contactRows
+                    $returnRows .= <<<HTML
 
                 <tr class="contact-row-container">
                     <td>
@@ -95,7 +95,7 @@ activeIndicator;
                     </td>
                 </tr>           
                 
-contactRows;
+HTML;
 
                 }
             } else {

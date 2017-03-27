@@ -28,16 +28,16 @@ namespace modules\home {
     
     <link rel="shortcut icon" type="image/x-icon" href="http://eserv.us/public/favicon.ico">
     
-    <link rel="stylesheet" href="http://eserv.us/public/css/contacts.css">
-    <link rel="stylesheet" href="http://eserv.us/public/css/chatBoxes.css">
+    <link rel="stylesheet" href="http://www.eserv.us/public/css/contacts.css">
+    <link rel="stylesheet" href="http://www.eserv.us/public/css/chatBoxes.css">
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
-    <script src="http://eserv.us/public/js/home.js"></script>
-    <script src="http://eserv.us/public/js/contacts.js"></script>
-    <script src="http://eserv.us/public/js/chat.js"></script>
+    <script src="http://www.eserv.us/public/js/home.js"></script>
+    <script src="http://www.eserv.us/public/js/contacts.js"></script>
+    <script src="http://www.eserv.us/public/js/chat.js"></script>
     <style>
         /* Set black background color, white text and some padding */
         footer {
