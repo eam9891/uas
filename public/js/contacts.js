@@ -26,7 +26,7 @@ eChat = {
     getMessages: function() {
 
         var id = eChat.friendID;
-        var mId = $('.chatBox#'+ id +' #msgs tbody tr:last').attr('id');
+        var mId = $('.chatBox#'+ id +' .message-area tbody tr:last').attr('id');
 
         $(document).unbind(".mine");
         $.ajax({
@@ -127,7 +127,7 @@ $(document).ready(function(){
     chatBoxes.on('keydown', '#input', function(event) {
         var chatID = $(this).parent().parent().attr("id");
         var msg = $(this).val();
-        var msgArea = $('#' + chatID + ' > #msgs');
+        var msgArea = $('#' + chatID + ' > .message-area');
 
         // If event = enter button pressed
         if (event.keyCode == 13) {
@@ -137,8 +137,8 @@ $(document).ready(function(){
             $(this).val('');
 
             $.ajax({
-                type: "POST",
-                url: "http://eserv.us/chat/addMessage/" + chatID,
+                type: "GET",
+                url: "http://www.eserv.us/chat/addMessage/" + chatID,
                 data: {
                     'msg'  : msg
                 },

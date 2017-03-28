@@ -103,9 +103,10 @@ namespace modules\chat {
             // Escape the message with mysqli real escape
             $cMessage = $message;
 
+
             $query = " 
                 INSERT INTO chat SET 
-                    userID=:userID, message=:message, author=:author, actionUser=:actionUser, 
+                    userID=:userID, message=:message, author=:author, actionUser=:actionUser, messageDate=TIMESTAMP ,
                         contactID = (
                             SELECT userID FROM users WHERE userID=:contactId
                         )
@@ -130,7 +131,7 @@ namespace modules\chat {
             $message = new ChatWriter();
             $message = $message->writeMessages($USER, $contactID, $addResult);
 
-            echo $message;
+            return $message;
         }
 
         // Todo: How to not "delete" for both users???
