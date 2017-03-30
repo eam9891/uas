@@ -30,7 +30,7 @@ namespace modules\admin {
             $query = "SELECT * FROM blogPosts WHERE readyForReview = TRUE AND postPublished = FALSE ";
             $numReviews = Database::query($query);
             $numReviews = $numReviews->rowCount();
-            $root = ROOT;
+
             self::$htmlString = <<<HTML
      
 <div class="container-fluid text-center">
@@ -67,13 +67,13 @@ namespace modules\admin {
                         <li class="nav-header"> 
                             <button id="blogToolsButton" data-toggle="collapse" data-target="#blogTools" class="menuButton"> 
                                 Blog Tools 
-                                <span href="" id="blogToolsArrow" class="glyphicon glyphicon-chevron-down"></span>
+                                <span id="blogToolsArrow" class="glyphicon glyphicon-chevron-down"></span>
                             </button>
                             <ul class="nav nav-stacked collapse in" id="blogTools">
-                                <li class="active"><a href="" id="editBlog" value="EditBlog" > Edit Blog <span class="label label-success" id="getNumReviews"> $numReviews </span></a></li>
-                                <li><a href="" id="showBlog" value="ArticleFactory"> Show Blog </a></li>
-                                <li><a href="" id="newPost" value="NewPost"> New Post </a></li>
-                                <li><a href="" id="myPosts"> My Posts </a></li>
+                                <li class="active"><a href="" id="editBlog"> Edit Blog <span class="label label-success" id="getNumReviews"> $numReviews </span></a></li>
+                                <li><a href="" id="showBlog"> Show Blog </a></li>
+                                <li><a href="" id="newPost" > New Post </a></li>
+                                <li><a href="" id="myPosts" > My Posts </a></li>
                                 <li><a href="#"> Alerts </a></li>
                             </ul>
                         </li>

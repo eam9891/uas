@@ -105,10 +105,10 @@ namespace modules\chat {
 
 
             $query = " 
-                INSERT INTO chat SET 
-                    userID=:userID, message=:message, author=:author, actionUser=:actionUser, messageDate=TIMESTAMP ,
+                INSERT INTO eserv.chat SET 
+                    userID=:userID, message=:message, author=:author, actionUser=:actionUser,
                         contactID = (
-                            SELECT userID FROM users WHERE userID=:contactId
+                            SELECT userID FROM eserv.users WHERE userID=:contactId
                         )
                  
             ";
@@ -121,17 +121,21 @@ namespace modules\chat {
             );
 
             $db = Database::connect();
-            $stmt = $db->prepare($query);
-            $stmt->execute($query_params);
+            try {
+                $stmt = $db->prepare($query);
+                $stmt->execute($query_params);
+            }
+            catch (\PDOException $ex) {
+                die("Failed to run query: " . $ex->getMessage());
+            }
+            //$addResult = $db->lastInsertId();
 
-            $addResult = $db->lastInsertId();
+            //$query = "SELECT * FROM chat WHERE id = $addResult";
+            //$addResult = Database::query($query);
+            //$message = new ChatWriter();
+            //$message = $message->writeMessages($USER, $contactID, $addResult);
 
-            $query = "SELECT * FROM chat WHERE id = $addResult";
-            $addResult = Database::query($query);
-            $message = new ChatWriter();
-            $message = $message->writeMessages($USER, $contactID, $addResult);
-
-            return $message;
+            //return $message;
         }
 
         // Todo: How to not "delete" for both users???

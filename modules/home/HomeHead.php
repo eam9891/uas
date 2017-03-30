@@ -28,69 +28,18 @@ namespace modules\home {
     
     <link rel="shortcut icon" type="image/x-icon" href="http://eserv.us/public/favicon.ico">
     
-    <link rel="stylesheet" href="http://www.eserv.us/public/css/contacts.css">
-    <link rel="stylesheet" href="http://www.eserv.us/public/css/chatBoxes.css">
+    <link rel="stylesheet" href="http://www.eserv.us/modules/contacts/css/contacts.css">
+    <link rel="stylesheet" href="http://www.eserv.us/modules/chat/css/chatBoxes.css">
+    <link rel="stylesheet" href="http://www.eserv.us/modules/home/css/home.css">
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
-    <script src="http://www.eserv.us/public/js/home.js"></script>
-    <script src="http://www.eserv.us/public/js/contacts.js"></script>
-    <script src="http://www.eserv.us/public/js/chat.js"></script>
-    <style>
-        /* Set black background color, white text and some padding */
-        footer {
-            background-color: #555;
-            color: white;
-            padding: 15px;
-        }
-        .profileButton {
-            border: none;
-            cursor: pointer;
-        }
-        .dropdownImage {
-            margin-top: 10px;
-
-        }
-        .navbar-login
-        {
-            width: 305px;
-            padding: 10px;
-            padding-bottom: 0px;
-        }
-
-
-        .navbar-login-session
-        {
-            padding: 10px;
-            padding-bottom: 0px;
-            padding-top: 0px;
-        }
-
-        .icon-size
-        {
-            font-size: 87px;
-        }
-
-        @media screen and (max-width: 1000px) {
-            .searchForm {
-                width: 200px;
-            }
-        }
-        .navbar-nav {
-            margin: 0;
-        }
-        .profile-button {
-            margin: 0;
-            padding: 0;
-            background-color: black;
-            color: green;
-        }
-        .menuButton {
-            
-        }
-    </style>
+    <script src="http://www.eserv.us/modules/home/js/home.js"></script>
+    <script src="http://www.eserv.us/modules/contacts/js/contacts.js"></script>
+    <script src="http://www.eserv.us/modules/chat/js/chat.js"></script>
+    
 </head>
 <body>
 HTML;

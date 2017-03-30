@@ -1,0 +1,51 @@
+/* Set black background color, white text and some padding */
+footer {
+    background-color: #555;
+    color: white;
+    padding: 15px;
+}
+.profileButton {
+    border: none;
+    cursor: pointer;
+}
+.dropdownImage {
+    margin-top: 10px;
+
+}
+.navbar-login
+{
+    width: 305px;
+    padding: 10px;
+    padding-bottom: 0px;
+}
+.menuButton {
+    width: 100%;
+    text-align: left;
+    background-color: transparent;
+    height: 40px;
+    border: none;
+}
+.menuButton:active {
+    border: none;
+    background-color: transparent;
+}
+.menuButton:hover {
+    background-color: transparent;
+}
+.navbar-login-session
+{
+    padding: 10px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+.icon-size
+{
+    font-size: 87px;
+}
+
+@media screen and (max-width: 1000px) {
+    .searchForm {
+        width: 200px;
+    }
+}

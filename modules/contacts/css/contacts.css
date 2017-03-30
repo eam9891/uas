@@ -1,0 +1,173 @@
+.container-fluid.contactContainer {
+    bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    width: 300px;
+    position: fixed;
+    background-color: white;
+    right: 0;
+    margin: 0;
+    font-family: 'tahoma', sans-serif;
+    font-size: 12px;
+}
+.contactPanel {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border: 1px solid #2f2f2f;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+/* message box header styles*/
+.contactHeader {
+    width: 100%;
+    background-color: #2f2f2f;
+    color: white;
+    text-align: center;
+    height: 32px;
+    border-color: #2f2f2f;
+}
+
+
+.panel-body.contactList {
+    height: 350px;
+    margin: 2px;
+    padding: 0;
+    width: 100%;
+}
+.nav.nav-tabs.contactSubHeader {
+    border: none;
+    height: 32px;
+    margin-left: 5px;
+}
+.nav.nav-tabs.contactSubHeader>li {
+    height: 32px;
+    margin-right: 10px;
+}
+
+.nav.nav-tabs.contactSubHeader>li>a {
+    height: 32px;
+    padding: 0;
+    color: #a3a3a3;
+    cursor: pointer;
+    margin-top: 0;
+}
+
+/* The active tab link */
+.nav.nav-tabs.contactSubHeader>li.active>a {
+    border: none;
+    background-color: #2f2f2f;
+    margin-right: 5px;
+    cursor: pointer;
+    color: white;
+}
+
+/* The active tab item after (this is the bottom arrow) */
+.nav.nav-tabs.contactSubHeader>li.active:after {
+    content: ' ';
+    position: absolute;
+    right: 26%;
+    border: 10px solid transparent;
+    border-top-color: #2f2f2f;
+
+}
+.nav.nav-tabs.contactSubHeader>li>a:hover {
+    background-color: #2f2f2f;
+    color: white;
+}
+.nav.nav-tabs.contactSubHeader>li.active>a:hover {
+    background-color: #2f2f2f;
+    color: white;
+    padding-bottom: 1px;
+    cursor: pointer;
+}
+.nav.nav-tabs.contactSubHeader>li>a>span.tabIcon {
+    margin-top: 10px;
+}
+.nav.nav-tabs.contactSubHeader>li>a>span.label {
+    margin-top: 0;
+
+    vertical-align: text-top;
+}
+
+
+.contactList h5 {
+    margin-left: 10px;
+    width: 50px;
+}
+#searchUsers {
+    margin-top: 10px;
+    width: 98%;
+
+    padding: 10px;
+}
+table#searchResults tbody {
+    overflow: scroll;
+}
+.contact-row a {
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    vertical-align: middle;
+}
+.panelBtn {
+    background-color: transparent;
+    border: none;
+    margin-top: 8px;
+}
+.widgetBtn {
+    background-color: transparent;
+    border: none;
+    margin-top: 6px;
+}
+.panelBtn:hover, .widgetBtn:hover{
+    border: none;
+}
+
+
+.contact-row-container {
+    border-bottom: 1px solid lightgray;
+}
+
+.contact-row-container td {
+    border-bottom: 1px solid lightgray;
+    padding: 3px 0 3px 2px;
+}
+
+.contact-row {
+    width: 100%;
+}
+
+
+
+.contactLink {
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.msg-time {
+    font-size: 10px;
+    float: right;
+    color: gray;
+}
+
+.avatar {
+    width: 30px;
+    height: 30px;
+    float: right;
+    border: 1px solid lightgray;
+}
+
+.centerTop {
+    height: 100%;
+    padding-top: 2px;
+    vertical-align: middle;
+}
+.statusText {
+    position: fixed;
+    padding-top: 4px;
+}
+.contactUsername {
+    position: relative;
+    padding-top: 4px;
+    float: left;
+}

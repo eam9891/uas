@@ -24,18 +24,32 @@ class RegisterController {
     private $row;
     private $role = "user";
 
-    public function default($params) {
-        $this->username = $_POST['username'];
-        $this->password = $_POST['password'];
-        $this->email = $_POST['email'];
-        unset ($_POST['username']);
-        unset ($_POST['password']);
-        unset ($_POST['email']);
-
-        // Ensure that the user has entered a non-empty username
-        if(empty($this->username)) {
-            die("Please enter a username.");
+    public function __construct() {
+        if (!empty($_POST['un'])){
+            $this->username = $_POST['un'];
+            unset ($_POST['un']);
         }
+
+        if (!empty($_POST['pw'])){
+            $this->password = $_POST['pw'];
+            unset ($_POST['pw']);
+        }
+
+        if (!empty($_POST['email'])){
+            $this->email = $_POST['email'];
+            unset ($_POST['email']);
+        }
+
+
+    }
+
+    public function default($params) {
+
+        $this->validateUsername();
+        //$this->validateEmail();
+
+
+
 
         // Ensure that the user has entered a non-empty password
         if(empty($this->password)) {
@@ -58,15 +72,7 @@ class RegisterController {
         // http://en.wikipedia.org/wiki/SQL_Injection
 
 
-        // This function takes three parameters, the table name, the where
-        // clause, and the query parameters, and it returns a single cell.
-        $this->row = Database::selectOne("users", "username = ?", [$this->username]);
 
-        // If a cell was returned, then we know a matching username was found in
-        // the database already and we should not allow the user to continue.
-        if($this->row) {
-            die("This username is already in use");
-        }
 
         // Now we perform the same type of check for the email address, in order
         // to ensure that it is unique.
@@ -124,6 +130,39 @@ class RegisterController {
         // Calling die or exit after performing a redirect using the header function is critical.
         // The rest of your PHP script will continue to execute and will be sent to the user if you do not die or exit.
         die("Redirecting to ".ROOT);
+    }
+
+    public function validateUsername() {
+
+        $return = array();
+
+
+        if(empty($this->username)) {
+            $return['username'] = "That username is not valid.";
+            echo json_encode($return);
+            return false;
+        } else {
+            // This function takes three parameters, the table name, the where
+            // clause, and the query parameters, and it returns a single cell.
+            $this->row = Database::selectOne("users", "username = ?", [$this->username]);
+
+            // If a cell was returned, then we know a matching username was found in
+            // the database already and we should not allow the user to continue.
+            if($this->row) {
+                $return['username'] = "That username is already taken.";
+                echo json_encode($return);
+                return false;
+
+            // Otherwise well return true here.
+            } else {
+                return true;
+            }
+        }
+
+    }
+
+    public function validateEmail() {
+
     }
 
 }

@@ -36,17 +36,11 @@ class BlogController {
             unset($_POST['params']);
         }
 
-
-
-
     }
 
     public function default($params) {
         // Blog Front Page
-
-
         if (SessionManager::getSessionID()) {
-
             $head = new HomeHead($this->USER);
             $header = new HomeHeader($this->USER);
         } else {

@@ -70,15 +70,15 @@ class ChatController {
     }
 
     public function addMessage($params) {
-        if (isset($_GET['msg'])) {
+        if (isset($_POST['msg'])) {
             $friendID = $params[0];
 
             // Escape the message string
-            $msg = htmlentities($_GET['msg'],  ENT_NOQUOTES);
+            $msg = htmlentities($_POST['msg'],  ENT_NOQUOTES);
 
             $chat = new FbChatMock();
-            echo $chat->addMessage($this->USER, $msg, $friendID);
-            // Todo: create a chat relation like the friends list?
+            $chat->addMessage($this->USER, $msg, $friendID);
+
         } else {
             echo "No message is set!";
         }

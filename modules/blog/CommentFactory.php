@@ -10,7 +10,8 @@ namespace modules\blog {
 
     use framework\database\Database;
 
-    class CommentFactory {
+    class CommentFactory ICommentFactory
+    {
 
         public function getComments(Article $obj) {
             $query = "SELECT * FROM blogPostComments WHERE postID = $obj->id";
