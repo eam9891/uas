@@ -138,6 +138,7 @@ class RegisterController {
 
 
         if(empty($this->username)) {
+            $return['status'] = false;
             $return['username'] = "That username is not valid.";
             echo json_encode($return);
             return false;
@@ -149,12 +150,16 @@ class RegisterController {
             // If a cell was returned, then we know a matching username was found in
             // the database already and we should not allow the user to continue.
             if($this->row) {
+                $return['status'] = false;
                 $return['username'] = "That username is already taken.";
                 echo json_encode($return);
                 return false;
 
             // Otherwise well return true here.
             } else {
+                $return['status'] = "green";
+                $return['username'] = " ";
+                echo json_encode($return);
                 return true;
             }
         }

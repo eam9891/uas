@@ -27,6 +27,11 @@ $(document).ready(function(){
             dataType: 'json',
             success: function(data) {
 
+                if (data['status'] == "green") {
+                    username.css({'border' : '2px solid green'});
+                } else {
+                    username.css({'border' : '2px solid red'});
+                }
                 validateUsername.html(data['username']).fadeIn();
             }
         });

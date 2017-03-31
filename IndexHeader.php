@@ -130,19 +130,31 @@ class IndexHeader {
         
 HTML;
 
-        $testing = <<< HTML
+        $testing = <<<HTML
 
-<header>
+<header class="e-header">
     
-    <div class="e-header">
-        <button type="button" class="e-header-toggle" data-toggle="collapse" data-target="#topNav, #sideNav">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <a class="e-logo" href="http://www.eserv.us">Underground Art School</a>
-    </div>
-    <div class="collapse navbar-collapse" id="topNav">
+    
+    <!--<button type="button" class="e-header-toggle" data-toggle="collapse" data-target="#topNav, #sideNav">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>-->
+    <a class="header-btn" href="http://www.eserv.us">Underground Art School</a>
+    
+    <!-- Login Modal Trigger -->
+    <a class="e-modal-button header-btn pull-right" data-toggle="e-modal" data-target="#registerModal">
+        <i class="fa fa-sign-in" aria-hidden="true"></i>
+        Login 
+    </a>
+    
+    <!-- Register Modal Trigger -->
+    <a class="e-modal-button header-btn pull-right" data-toggle="e-modal" data-target="#loginModal">
+        <i class="fa fa-user-plus" aria-hidden="true"></i>
+        Sign Up 
+    </a>
+    
+    <div class="collapse " id="topNav">
         
         <!--<ul class="nav navbar-nav">
             <li class="dropdown">
@@ -161,19 +173,6 @@ HTML;
         </ul>-->
         
         
-        <ul class="nav navbar-nav navbar-right">
-            <!-- Trigger the register modal with a button-->
-            <li>
-                <button class="e-modal-button pull-right" data-toggle="e-modal" data-target="#registerModal">
-                    <span class="glyphicon glyphicon-user"></span> 
-                    Sign Up 
-                </button>
-                
-            </li>
-            <!-- Trigger the login modal with a button-->
-            <li><a href="" data-toggle="modal" data-target="#loginModal"><span class="glyphicon glyphicon-user"></span> Login </a></li>
-        </ul>
-
     </div>
 
 </header>
@@ -187,24 +186,25 @@ HTML;
         <div class="e-modal-content">
             <div class="e-modal-header">
                 <button type="button" class="e-modal-close" data-target="#registerModal">
-                    <span class="glyphicon glyphicon-remove"></span>
+                    <i class="fa fa-times" aria-hidden="true"></i>
                 </button>
-                <h4 class="e-modal-title">Registration</h4>
+                <h4 class="e-modal-title"> Sign Up </h4>
             </div>
-            <div class="e-modal-body">
-                <form action="http://www.eserv.us/register/" method="POST">
+            
+            <form action="http://www.eserv.us/register/" method="POST">
+                <div class="e-modal-body">
                     <div class="form-group">
                         <label for="email">
                             Enter Your Email Address:
-                            <div id="validateEmail"></div>
                         </label>
+                        <div id="validateEmail"></div>
                         <input type="text" class="form-control" id="email" name="email">
                     </div>
                     <div class="form-group">
                         <label for="un">
                             Enter A Username:
-                            <div id="validateUsername"></div>
                         </label>
+                        <div id="validateUsername" class="error"></div>
                         <input type="text" class="form-control" id="un" name="un">
                     </div>
                     <div class="form-group">
@@ -212,29 +212,30 @@ HTML;
                         <input type="password" class="form-control" id="pw" name="pw">
                     </div>
                     
-                </form>
-            </div>
-            <div class="e-modal-footer">
-                <div align="center">
-                    <button type="submit" class="btn btn-success" id="registerBtn" style="margin: auto;"> Register </button>
                 </div>
-                
-            </div>
+                <div class="e-modal-footer">
+                    <div align="center">
+                        <button type="submit" class="btn btn-success" id="registerBtn" style="margin: auto;"> Register </button>
+                    </div>
+                    
+                </div>
+            </form>
         </div>
     </div>
 </div>
 <!-- Login Modal -->
-<div id="loginModal" class="e-modal e-fade" role="dialog">
-    <div class="modal-dialog">
+<div id="loginModal" class="e-modal e-fade">
+    <div class="e-modal-dialog">
 
         <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Login</h4>
+        <div class="e-modal-content">
+            <div class="e-modal-header">
+                <button type="button" class="close" data-dismiss="modal">&time</button>
+                <h4 class="e-modal-title">Login</h4>
             </div>
-            <div class="modal-body">
-                <form action="http://www.eserv.us/login/" method="POST">
+            <form action="http://www.eserv.us/login/" method="POST">
+                <div class="e-modal-body">
+                
                     <div class="form-group">
                         <label for="username">Username:</label>
                         <input type="text" class="form-control" id="username" name="username">
@@ -247,11 +248,12 @@ HTML;
                         <label><input type="checkbox"> Remember me</label>
                     </div>
                     <button type="submit" class="btn btn-default">Submit</button>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
+                
+                </div>
+                <div class="e-modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </form>
         </div>
 
     </div>

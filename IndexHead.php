@@ -18,7 +18,7 @@ class IndexHead {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="/public/favicon.ico">
-    
+    <link rel="stylesheet" href="http://www.eserv.us/public/font-awesome-4.7.0/css/font-awesome.min.css">
    
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -45,6 +45,8 @@ HTML;
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     
     <link rel="stylesheet" href="http://www.eserv.us/public/css/main.css">
+    <link rel="stylesheet" href="http://www.eserv.us/public/css/e-modal.css">
+    <link rel="stylesheet" href="http://www.eserv.us/public/font-awesome-4.7.0/css/font-awesome.min.css">
     
     <script src="http://www.eserv.us/public/js/main.js"></script>
     <script src="http://www.eserv.us/public/js/loaders.js"></script>
