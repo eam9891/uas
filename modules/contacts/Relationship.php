@@ -88,16 +88,19 @@ class Relationship {
     public function arrToRelationship($row) {
         if (!empty($row)) {
             if (isset($row['userOne']) && isset($row['userTwo'])) {
-                $db = new Database();
-                $db = $db->connect();
+
+                //echo $row['userOne'];
+
+                $usersArr = [];
+
+                $db = Database::connect();
 
                 // Fetch the user details and create the user object set.
                 $query = "
-                    SELECT * FROM users
-                    WHERE 
-                      userID = :u1
-                    OR 
-                      userID = :u2
+
+                    SELECT userID FROM users WHERE userID IN (:u1, :u2)
+
+                    
                 ";
                 $query_params = array (
                     ':u1' => (int) $row['userOne'],
@@ -111,9 +114,10 @@ class Relationship {
                     die("Failed to run query: " . $ex->getMessage());
                 }
 
-                $usersArr = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
-
+                while ($record = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+                    $usersArr[] = $record;
+                }
 
                 $userOne = new User();
                 $userTwo = new User();
@@ -122,7 +126,8 @@ class Relationship {
                 if ($row['userOne'] < $row['userTwo']) {
                     $userOne->arrToUser($usersArr[0]);
                     $userTwo->arrToUser($usersArr[1]);
-                } else {
+
+                } else if($row['userOne'] > $row['userTwo']) {
                     $userOne->arrToUser($usersArr[1]);
                     $userTwo->arrToUser($usersArr[0]);
                 }

@@ -23,6 +23,7 @@ class RegisterController {
     private $stmt;
     private $row;
     private $role = "user";
+    private $registerDB;
 
     public function __construct() {
         if (!empty($_POST['un'])){
@@ -35,53 +36,27 @@ class RegisterController {
             unset ($_POST['pw']);
         }
 
-        if (!empty($_POST['email'])){
-            $this->email = $_POST['email'];
-            unset ($_POST['email']);
+        if (!empty($_POST['em'])){
+            $this->email = $_POST['em'];
+            unset ($_POST['em']);
         }
 
+        $this->registerDB = new RegisterDB();
 
     }
 
     public function default($params) {
 
         $this->validateUsername();
-        //$this->validateEmail();
-
-
-
+        $this->validateEmail();
+        //$this->validatePassword();
 
         // Ensure that the user has entered a non-empty password
         if(empty($this->password)) {
             die("Please enter a password.");
         }
 
-        // Make sure the user entered a valid E-Mail address.
-        // filter_var is a useful PHP function for validating form input, see:
-        // http://us.php.net/manual/en/function.filter-var.php
-        // http://us.php.net/manual/en/filter.filters.php
-        if(!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
-            die("Invalid E-Mail Address");
-        }
 
-        // First an sql query will check if the username they want is in use or not.
-        // The selectOne() function is part of a custom wrapper on the PDO library.
-        // Here we use PDO prepared statements. These statements have special tokens
-        // (technically called parameters) to protect against SQL injection attacks.
-        // For more information on SQL injections, see Wikipedia:
-        // http://en.wikipedia.org/wiki/SQL_Injection
-
-
-
-
-        // Now we perform the same type of check for the email address, in order
-        // to ensure that it is unique.
-        $this->row = Database::selectOne("users", "email = ?", [$this->email]);
-
-        if($this->row)
-        {
-            die("This email address is already registered");
-        }
 
         // Here we are preparing to insert the users credentials into the database,
         // again we are using PDO prepared statements with tokens.
@@ -124,50 +99,92 @@ class RegisterController {
         $this->stmt = Database::insert($query, $query_params);
 
 
-        // This redirects the user back to the index/login page after they registerForm
-        header("Location: ".ROOT);
-
-        // Calling die or exit after performing a redirect using the header function is critical.
-        // The rest of your PHP script will continue to execute and will be sent to the user if you do not die or exit.
-        die("Redirecting to ".ROOT);
+        echo "success!";
     }
 
     public function validateUsername() {
 
         $return = array();
 
-
         if(empty($this->username)) {
             $return['status'] = false;
-            $return['username'] = "That username is not valid.";
-            echo json_encode($return);
-            return false;
-        } else {
-            // This function takes three parameters, the table name, the where
-            // clause, and the query parameters, and it returns a single cell.
-            $this->row = Database::selectOne("users", "username = ?", [$this->username]);
+            $return['msg'] = "Please enter a username.";
 
+        } else {
+            $query = "SELECT 1 FROM users WHERE username = :un";
+            $query_params = array(":un" => "$this->username");
+
+            try {
+                $stmt = Database::connect()->prepare($query);
+                $stmt->execute($query_params);
+            }
+            catch (\PDOException $ex) {
+                die("Failed to run query: " . $ex->getMessage());
+            }
+
+            $row = $stmt->fetchColumn();
             // If a cell was returned, then we know a matching username was found in
             // the database already and we should not allow the user to continue.
-            if($this->row) {
+            if($row) {
                 $return['status'] = false;
-                $return['username'] = "That username is already taken.";
-                echo json_encode($return);
-                return false;
+                $return['msg'] = "That username is already taken.";
 
-            // Otherwise well return true here.
+
+                // Otherwise well return true here.
             } else {
                 $return['status'] = "green";
-                $return['username'] = " ";
-                echo json_encode($return);
-                return true;
+                $return['msg'] = " ";
+
             }
         }
 
+        echo json_encode($return);
+
+        //$json = $this->registerDB->validateUsername($this->username);
+        //echo $json;
     }
 
     public function validateEmail() {
 
+
+        $return = array();
+
+        if(empty($this->email)) {
+            $return['status'] = false;
+            $return['msg'] = "Please enter an email address.";
+
+        } elseif (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
+            $return['status'] = false;
+            $return['msg'] = "Please enter a valid email address.";
+        } else {
+            $query = "SELECT 1 FROM users WHERE email = :em";
+            $query_params = array(":em" => "$this->email");
+
+            try {
+                $stmt = Database::connect()->prepare($query);
+                $stmt->execute($query_params);
+            }
+            catch (\PDOException $ex) {
+                die("Failed to run query: " . $ex->getMessage());
+            }
+
+            $row = $stmt->fetchColumn();
+            // If a cell was returned, then we know a matching username was found in
+            // the database already and we should not allow the user to continue.
+            if($row) {
+                $return['status'] = false;
+                $return['msg'] = "That email is already in use.";
+
+
+                // Otherwise well return true here.
+            } else {
+                $return['status'] = "green";
+                $return['msg'] = " ";
+
+            }
+        }
+
+        echo json_encode($return);
     }
 
 }

@@ -58,6 +58,6 @@ HTML;
 HTML;
 
 
-        echo $head;
+        echo $testing;
     }
 }

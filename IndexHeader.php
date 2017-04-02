@@ -143,13 +143,13 @@ HTML;
     <a class="header-btn" href="http://www.eserv.us">Underground Art School</a>
     
     <!-- Login Modal Trigger -->
-    <a class="e-modal-button header-btn pull-right" data-toggle="e-modal" data-target="#registerModal">
+    <a class="e-modal-button header-btn pull-right" data-toggle="e-modal" data-target="#loginModal">
         <i class="fa fa-sign-in" aria-hidden="true"></i>
         Login 
     </a>
     
     <!-- Register Modal Trigger -->
-    <a class="e-modal-button header-btn pull-right" data-toggle="e-modal" data-target="#loginModal">
+    <a class="e-modal-button header-btn pull-right" data-toggle="e-modal" data-target="#registerModal">
         <i class="fa fa-user-plus" aria-hidden="true"></i>
         Sign Up 
     </a>
@@ -188,50 +188,60 @@ HTML;
                 <button type="button" class="e-modal-close" data-target="#registerModal">
                     <i class="fa fa-times" aria-hidden="true"></i>
                 </button>
-                <h4 class="e-modal-title"> Sign Up </h4>
+                <h3 class="e-modal-title"> Sign Up </h3>
+            </div>
+           
+            
+            <div class="e-modal-body">
+                <div class="form-group">
+                    <label for="email">
+                        Enter Your Email Address:
+                    </label>
+                    <div id="emailLoader" style="display: inline-block;"></div>
+                    <div id="validateEmail" class="error"></div>
+                    <input type="text" class="form-control" id="email" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="un">
+                        Enter A Username:
+                    </label>
+                    <div id="usernameLoader" style="display: inline-block;"></div>
+                    <div id="validateUsername" class="error"></div>
+                    <input type="text" class="form-control" id="un" name="un">
+                </div>
+                <div class="form-group">
+                    <label for="pw">
+                        Enter A Password:
+                    </label>
+                    <div id="passLoader" style="display: inline-block;"></div>
+                    <div id="validatePassword" class="error"></div>
+                    <input type="password" class="form-control" id="pw" name="pw">
+                </div>
+                
+            </div>
+            <div class="e-modal-footer">
+                <div align="center">
+                    <button type="submit" class="btn btn-success" id="registerBtn" style="margin: auto;"> Register </button>
+                </div>
+                
             </div>
             
-            <form action="http://www.eserv.us/register/" method="POST">
-                <div class="e-modal-body">
-                    <div class="form-group">
-                        <label for="email">
-                            Enter Your Email Address:
-                        </label>
-                        <div id="validateEmail"></div>
-                        <input type="text" class="form-control" id="email" name="email">
-                    </div>
-                    <div class="form-group">
-                        <label for="un">
-                            Enter A Username:
-                        </label>
-                        <div id="validateUsername" class="error"></div>
-                        <input type="text" class="form-control" id="un" name="un">
-                    </div>
-                    <div class="form-group">
-                        <label for="pw">Enter A Password:</label>
-                        <input type="password" class="form-control" id="pw" name="pw">
-                    </div>
-                    
-                </div>
-                <div class="e-modal-footer">
-                    <div align="center">
-                        <button type="submit" class="btn btn-success" id="registerBtn" style="margin: auto;"> Register </button>
-                    </div>
-                    
-                </div>
-            </form>
         </div>
     </div>
 </div>
+
+
 <!-- Login Modal -->
-<div id="loginModal" class="e-modal e-fade">
+<div id="loginModal" class="e-modal">
     <div class="e-modal-dialog">
 
         <!-- Modal content-->
         <div class="e-modal-content">
             <div class="e-modal-header">
-                <button type="button" class="close" data-dismiss="modal">&time</button>
-                <h4 class="e-modal-title">Login</h4>
+                <button type="button" class="e-modal-close" data-target="#loginModal">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </button>
+                <h3 class="e-modal-title">Login</h3>
             </div>
             <form action="http://www.eserv.us/login/" method="POST">
                 <div class="e-modal-body">
@@ -244,14 +254,19 @@ HTML;
                         <label for="password">Password:</label>
                         <input type="password" class="form-control" id="password" name="password">
                     </div>
-                    <div class="checkbox">
-                        <label><input type="checkbox"> Remember me</label>
-                    </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
+                    <!--<div class="checkbox">
+                        <input type="checkbox"> Remember me
+                    </div>-->
+                    
                 
                 </div>
                 <div class="e-modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                   
+                    <div align="center">
+                        <button type="submit" class="btn green">Submit</button>
+                        
+                    </div>
+                    
                 </div>
             </form>
         </div>
@@ -262,7 +277,7 @@ HTML;
 HTML;
 
 
-        echo $header;
+        echo $testing;
     }
 
 }

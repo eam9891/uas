@@ -24,6 +24,9 @@ class ChatController {
     public function getChatWidget($params) {
         if (Authorize::User($this->USER)) {
 
+            //Notice: Uninitialized string offset: 0 in /var/www/eserv.us/public_html/modules/chat/ChatController.php on line 27
+//Failed to run query: SQLSTATE[42000]: Syntax error or access violation: 1064
+
             $contactID = $params[0];
             $chat = new FbChatMock();
             $messages = $chat->getAllMessages($this->USER, $contactID);

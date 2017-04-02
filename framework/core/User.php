@@ -37,16 +37,8 @@ class User {
         return $this->email;
     }
 
-    public function getPassword() {
-        return $this->password;
-    }
-
     public function getRole() {
         return $this->role;
-    }
-
-    public function getSalt() {
-        return $this->salt;
     }
 
     public function getActivityTime() {
@@ -65,16 +57,8 @@ class User {
         $this->email = $email;
     }
 
-    public function setPassword($password) {
-        $this->password = $password;
-    }
-
     public function setRole($role) {
         $this->role = $role;
-    }
-
-    public function setSalt($salt) {
-        $this->salt = $salt;
     }
 
     public function setActivityTime($active) {
@@ -96,7 +80,7 @@ class User {
         // This query retrieves the user's information from the database using the supplied userID
         $query = "
             SELECT
-                *
+                userID, username, email, role, activityTime
             FROM users
             WHERE
                 userID = :x
@@ -127,9 +111,7 @@ class User {
             isset($userRow['userID'])         ? $this->setUserId($userRow['userID'])                 : '';
             isset($userRow['username'])       ? $this->setUsername($userRow['username'])             : '';
             isset($userRow['email'])          ? $this->setEmail($userRow['email'])                   : '';
-            isset($userRow['password'])       ? $this->setPassword($userRow['password'])             : '';
             isset($userRow['role'])           ? $this->setRole($userRow['role'])                     : '';
-            isset($userRow['salt'])           ? $this->setSalt($userRow['salt'])                     : '';
             isset($userRow['activityTime'])   ? $this->setActivityTime($userRow['activityTime'])     : '';
         }
     }

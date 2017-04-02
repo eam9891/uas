@@ -108,6 +108,13 @@ a.header-btn:hover {
     width: auto;
     display: inline-block;
 }
+.btn {
+    padding: 10px;
+    border: none;
+}
+.btn:hover {
+    cursor: pointer;
+}
 input {
     width: 100%;
     padding: 5px;

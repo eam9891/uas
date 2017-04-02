@@ -114,7 +114,7 @@ HTML;
     
 HTML;
 
-        echo $frontPage;
+        echo $testing;
 
     }
 }

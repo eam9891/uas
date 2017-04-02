@@ -38,8 +38,6 @@ class LoginController extends ILogin {
         $this->username = $username;
         $this->password = $password;
 
-        $this->login_ok = false;
-
         // First we try to grab the username they entered from the database
         $query = "SELECT userID, username FROM users WHERE username = :un";
         $query_params = array(":un" => $this->username);
@@ -49,24 +47,26 @@ class LoginController extends ILogin {
         // If the $result returns true here we know it is a registered username and can continue
         if ($result['username']) {
 
-            $worker = new User();
-            $USER = $worker->getUser($result['userID']);
+            $query = "SELECT password, salt FROM users WHERE userID = :id";
+            $query_params = array(":id" => $result['userID']);
+            $pass = Database::select($query, $query_params);
 
             // Using the password submitted by the user and the salt stored in the database,
             // we can now check to see whether the passwords match by hashing the submitted password
             // and comparing it to the hashed version already stored in the database.
             $this->encryption = new Encryption();
-            $this->encryptedPass = $this->encryption->eCrypt($this->password, $USER->getSalt());
+            $this->encryptedPass = $this->encryption->eCrypt($this->password, $pass['salt']);
 
             // If they match, then we can successfully log the user in.
-            if ($this->encryptedPass == $USER->getPassword()) {
+            if ($this->encryptedPass == $pass['password']) {
 
-                // Flip login_ok to true
-                $this->login_ok = true;
+                $user = new User();
+                $USER = $user->getUser($result['userID']);
+
                 $time = date("Y-m-d H:i:s");
                 $query = "UPDATE users SET activityTime = :thisTime WHERE userID = :userID ";
                 $query_params = array (
-                    ":userID" => $USER->getUserId(),
+                    ":userID" => $result['userID'],
                     ":thisTime" => $time
                 );
                 try {

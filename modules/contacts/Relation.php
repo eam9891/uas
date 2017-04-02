@@ -104,6 +104,7 @@ SQL;
             $rel = new Relationship();
             $rel->arrToRelationship($value);
             $rels[] = $rel;
+
         }
 
 
