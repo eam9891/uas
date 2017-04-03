@@ -15,19 +15,15 @@ function registerLoader(div) {
 
 function checkStrength(password) {
     //initial strength
-    var strength = 0
+    var strength = 0;
+    var result   = $('#result');
 
     //if the password length is less than 6, return message.
     if (password.length < 6) {
-        $('#result').removeClass();
-        $('#result').addClass('short');
+        result.removeClass();
+        result.addClass('short');
         return 'Too short'
     }
-
-    //length is ok, lets continue.
-
-    //if length is 8 characters or more, increase strength value
-    if (password.length > 7) strength += 1;
 
     //if password contains both lower and uppercase characters, increase strength value
     if (password.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/))  strength += 1;
@@ -45,23 +41,29 @@ function checkStrength(password) {
 
     //if value is less than 2
     if (strength < 2) {
-        $('#result').removeClass();
-        $('#result').addClass('weak');
+        result.removeClass();
+        result.addClass('weak');
         return 'Weak'
     }
-    else if (strength == 2 )
+    else if (strength === 2 )
     {
-        $('#result').removeClass()
-        $('#result').addClass('good')
+        result.removeClass();
+        result.addClass('good');
         return 'Good'
     }
     else
     {
-        $('#result').removeClass()
-        $('#result').addClass('strong')
+        result.removeClass();
+        result.addClass('strong');
         return 'Strong'
     }
 }
+
+function checkStatus() {
+
+}
+
+
 
 $(document).ready(function(){
 
