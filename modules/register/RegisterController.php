@@ -22,8 +22,9 @@ class RegisterController {
     private $email;
     private $stmt;
     private $row;
-    private $role = "user";
     private $registerDB;
+    private $regStatus = [];
+
 
     public function __construct() {
         if (!empty($_POST['un'])){
@@ -47,59 +48,50 @@ class RegisterController {
 
     public function default($params) {
 
-        $this->validateUsername();
         $this->validateEmail();
-        //$this->validatePassword();
+        $this->validatePassword();
+        $this->validateUsername();
 
-        // Ensure that the user has entered a non-empty password
-        if(empty($this->password)) {
-            die("Please enter a password.");
+        if ($this->regStatus['email'] == true && $this->regStatus['username'] == true && $this->regStatus['password'] == true) {
+            $this->registerDB->doRegistration($this->email, $this->username, $this->password);
+
+        } else {
+            header("Location: " . ROOT);
         }
 
 
 
-        // Here we are preparing to insert the users credentials into the database,
-        // again we are using PDO prepared statements with tokens.
-        $query = "
-            INSERT INTO users (
-                username,
-                password,
-                salt,
-                email,
-                role
-            ) VALUES (
-                :username,
-                :password,
-                :salt,
-                :email,
-                :role
-            )
-        ";
+    }
 
-        // Before we execute our query, it is better to do some password encryption first.
-        // That way the users password is never stored in plaintext in the database.
-        // Using the Encryption class we generate a salt (a long random string),
-        // and hash the password with the salt concatenated on the end.
-        // Check out the Encryption class for more information on how it works.
-        $encryption = new Encryption();
-        $salt = $encryption->generateSalt();
-        $encryptedPass = $encryption->eCrypt($this->password, $salt);
+    public function validateEmail() {
 
-        // Here we prepare our tokens for insertion into the SQL query.  We do not
-        // store the original password; only the encrypted version of it.  We do store
-        // the salt (in its plaintext form).
-        $query_params = array (
-            ':username' => $this->username,
-            ':password' => $encryptedPass,
-            ':salt' => $salt,
-            ':email' => $this->email,
-            ':role' => $this->role
-        );
+        $return = array();
 
-        $this->stmt = Database::insert($query, $query_params);
+        if(empty($this->email)) {
+            $this->regStatus['email'] = false;
+            $return['status'] = false;
+            $return['msg'] = "Please enter an email address.";
+        }
+
+        if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
+            $this->regStatus['email'] = false;
+            $return['status'] = false;
+            $return['msg'] = "Please enter a valid email address.";
+        }
+
+        if($this->registerDB->selectEmail($this->email)) {
+            $this->regStatus['email'] = false;
+            $return['status'] = false;
+            $return['msg'] = "That email is already in use.";
+
+        } else {
+            $this->regStatus['email'] = true;
+            $return['status'] = "green";
+            $return['msg'] = " ";
+        }
 
 
-        echo "success!";
+        echo json_encode($return);
     }
 
     public function validateUsername() {
@@ -107,31 +99,21 @@ class RegisterController {
         $return = array();
 
         if(empty($this->username)) {
+            $this->regStatus['username'] = false;
             $return['status'] = false;
             $return['msg'] = "Please enter a username.";
 
         } else {
-            $query = "SELECT 1 FROM users WHERE username = :un";
-            $query_params = array(":un" => "$this->username");
 
-            try {
-                $stmt = Database::connect()->prepare($query);
-                $stmt->execute($query_params);
-            }
-            catch (\PDOException $ex) {
-                die("Failed to run query: " . $ex->getMessage());
-            }
-
-            $row = $stmt->fetchColumn();
-            // If a cell was returned, then we know a matching username was found in
-            // the database already and we should not allow the user to continue.
-            if($row) {
+            if($this->registerDB->selectUsername($this->username)) {
+                $this->regStatus['username'] = false;
                 $return['status'] = false;
                 $return['msg'] = "That username is already taken.";
 
 
                 // Otherwise well return true here.
             } else {
+                $this->regStatus['username'] = true;
                 $return['status'] = "green";
                 $return['msg'] = " ";
 
@@ -144,44 +126,19 @@ class RegisterController {
         //echo $json;
     }
 
-    public function validateEmail() {
-
+    public function validatePassword() {
 
         $return = array();
 
-        if(empty($this->email)) {
+        // Ensure that the user has entered a non-empty password
+        if(empty($this->password)) {
+            $this->regStatus['password'] = false;
             $return['status'] = false;
-            $return['msg'] = "Please enter an email address.";
-
-        } elseif (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
-            $return['status'] = false;
-            $return['msg'] = "Please enter a valid email address.";
+            $return['msg'] = "Please enter a password.";
         } else {
-            $query = "SELECT 1 FROM users WHERE email = :em";
-            $query_params = array(":em" => "$this->email");
-
-            try {
-                $stmt = Database::connect()->prepare($query);
-                $stmt->execute($query_params);
-            }
-            catch (\PDOException $ex) {
-                die("Failed to run query: " . $ex->getMessage());
-            }
-
-            $row = $stmt->fetchColumn();
-            // If a cell was returned, then we know a matching username was found in
-            // the database already and we should not allow the user to continue.
-            if($row) {
-                $return['status'] = false;
-                $return['msg'] = "That email is already in use.";
-
-
-                // Otherwise well return true here.
-            } else {
-                $return['status'] = "green";
-                $return['msg'] = " ";
-
-            }
+            $this->regStatus['password'] = true;
+            $return['status'] = "green";
+            $return['msg'] = " ";
         }
 
         echo json_encode($return);

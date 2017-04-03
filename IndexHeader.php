@@ -8,7 +8,7 @@
  */
 class IndexHeader {
     public function __construct() {
-        $header = <<<HTML
+        $header = <<< HTML
 
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
@@ -130,7 +130,7 @@ class IndexHeader {
         
 HTML;
 
-        $testing = <<<HTML
+        $testing = <<< HTML
 
 <header class="e-header">
     
@@ -213,7 +213,8 @@ HTML;
                     <label for="pw">
                         Enter A Password:
                     </label>
-                    <div id="passLoader" style="display: inline-block;"></div>
+                    <span id="result"></span>
+                    <div id="passwordLoader" style="display: inline-block;"></div>
                     <div id="validatePassword" class="error"></div>
                     <input type="password" class="form-control" id="pw" name="pw">
                 </div>

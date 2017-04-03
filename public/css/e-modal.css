@@ -11,6 +11,7 @@
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 .e-modal-content {
+    display: none;
     background-color: #fefefe;
     margin: 15% auto; /* 15% from the top and centered */
     border: 1px solid black;
